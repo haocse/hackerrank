@@ -6,9 +6,17 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.regex.*;
 
-public class arrayManipulation {
+public class ArrayManipulation {
 
     // Complete the arrayManipulation function below.
+    /**
+     * Check this out. 
+     * https://stackoverflow.com/questions/48162233/logic-used-behind-array-manipulation-of-hackerrank
+     * 
+     * @param n
+     * @param queries
+     * @return
+     */
     static long arrayManipulation(int n, int[][] queries) { //
 
         // initialize array with 0's of size n
@@ -22,12 +30,23 @@ public class arrayManipulation {
             int a = queries[i][0] - 1;
             int b = queries[i][1] - 1;
             int k = queries[i][2];
-
+            
+            // System.out.print("p:" + a + "\n");
+            // System.out.print(arr[a] + "\n");
             arr[a] += k;
-            if (b + 1 < n) {
+            // System.out.print(arr[a] + "\n");
+            
+            
+            
+            if (b + 1 < n) { // what's this?
                 arr[b + 1] -= k;
             }
         }
+        
+
+        // for (int i = 0; i < arr.length; i++) {
+        //     System.out.print(arr[i] + "\n") ;
+        // }
 
         // track highest val seen so far as we go
         long max = Long.MIN_VALUE;
@@ -35,6 +54,10 @@ public class arrayManipulation {
             arr[i] += arr[i - 1];
             max = Math.max(arr[i], max);
         }
+        System.out.print(arr[0] + "-" + arr[1] + "-" + arr[2] + "-" + arr[3] + "-" + arr[4] + "\n");
+
+        System.out.print("---max----");
+        System.out.print(max);
 
         return max;
     }
