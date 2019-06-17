@@ -9,7 +9,11 @@ import java.util.regex.*;
 public class SherlockAndAnagrams {
 
     static int sherlockAndAnagrams(String s) {
-		int start = 0 ; int end = start + 1; int strLength = s.length(); int counter = 0;        HashMap<String,Integer> str = new HashMap<>();
+		int start = 0 ; 
+		int end = start + 1; 
+		int strLength = s.length(); 
+		int counter = 0;        
+		HashMap<String,Integer> str = new HashMap<>();
         while(start < strLength){
             char[] c = s.substring(start,end).toCharArray();
             Arrays.sort(c);
