@@ -9,7 +9,26 @@ import java.util.regex.*;
 public class SherlockAndAnagrams {
 
     static int sherlockAndAnagrams(String s) {
-		return 1;
+		int start = 0 ; int end = start + 1; int strLength = s.length(); int counter = 0;        HashMap<String,Integer> str = new HashMap<>();
+        while(start < strLength){
+            char[] c = s.substring(start,end).toCharArray();
+            Arrays.sort(c);
+            String temp = String.valueOf(c);
+
+            if(!str.containsKey(temp))
+                str.put(temp, 1);
+            else{
+                int freq = str.get(temp);
+                counter += freq;
+                str.put(temp, freq + 1);
+            }
+            end++;
+            if(end > strLength){
+                start++;
+                end = start + 1;
+            }
+        }
+        return counter;
 
     }
 
@@ -25,7 +44,8 @@ public class SherlockAndAnagrams {
             String s = scanner.nextLine();
 
             int result = sherlockAndAnagrams(s);
-
+			
+			System.out.print(result + "\n");
             // bufferedWriter.write(String.valueOf(result));
             // bufferedWriter.newLine();
         }
